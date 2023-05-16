@@ -68,4 +68,17 @@ hence the same ppids
 
 how to check the current shell id : echo $$
 
+The ps command lists out the current processes that are running in the terminal
 
+5. The Oprhan process
+This is a running process whose parent has finished or teminated
+
+6. Init process
+Init is the parent of all processes, executed by the kenel during the booting of the system
+it has a pid of 1
+
+6. The process table
+The process table is a data structure in the RAM of the computer that holds info about the processes currently being handled by the OS
+
+6. Process Entry
+This is created when the process is creatd by a fork() system call

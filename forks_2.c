@@ -16,6 +16,15 @@ int main(void)
 		perror("Unsuccessfull\n");
 	}
 
+	if (pid == 0)
+	{
+		printf("The child process\n");
+	}
+	else
+	{
+		printf("The parent process\n");
+	}
+
 	printf("After fork i am two\n");
 
 	return (0);
