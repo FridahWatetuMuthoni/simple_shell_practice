@@ -72,6 +72,7 @@ The ps command lists out the current processes that are running in the terminal
 
 5. The Oprhan process
 This is a running process whose parent has finished or teminated
+It basically means that the parent terminated before the child
 
 6. Init process
 Init is the parent of all processes, executed by the kenel during the booting of the system
@@ -82,3 +83,46 @@ The process table is a data structure in the RAM of the computer that holds info
 
 6. Process Entry
 This is created when the process is creatd by a fork() system call
+
+7. Zombie process
+This is when the child terminates before the parent
+
+8. Wait system call
+All of these system calls are used to wait for state changes in a child of the calling process,
+and obtain information about the child whose state has been changed.
+A state change is considered to be:
+i. The child is terminated
+ii. The child was stopped by a signal
+iii. The child was resumed by a signal
+In case of a terminated child, performing a wait allows the system to release the resources associated with the child.
+When a wait is not performed then the terminated child remains in the zombie state
+
+9. execve
+execve helps in program execution
+int execve(const char *filename, char *const argv[], char *const envp[]);
+filename=a binary executable or a script starting with a line of the form: #! interpreter[]
+argv=an array of string arguments
+envp=must be terminated by a NULL pointer
+
+10. getline() function
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+stream = where to read our text from eg keyboard hence you will use stdin
+n=size of the buffer created to store the text from standard input
+**lineptr = used to store the address of the buffer that was created to store the text from the 
+stardard input
+
+11. strtok() function
+The strtok() functions extracts tokens from strings
+char *strtok(char *str, const char *delim);
+str-the string that we are checking
+delim- what is separating the text stream
+
+12. Commandline arguements
+These are arguements passed from the commandline to the c program when they are executed
+
+13. Arguement Count (argc):
+The number of commandline arguements passed by the user including the name of the program
+
+14. Arguement Vectors (argv):
+This is a null terminated array of stringd (charater pointers) used to store the entire list
+of the commandline arguements
