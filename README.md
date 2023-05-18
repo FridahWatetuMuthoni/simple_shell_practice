@@ -126,3 +126,10 @@ The number of commandline arguements passed by the user including the name of th
 14. Arguement Vectors (argv):
 This is a null terminated array of stringd (charater pointers) used to store the entire list
 of the commandline arguements
+
+15. Commandline arguements
+The shell environment is a REPL-> Read, Evaluate, Print, Loop
+prompt-> read input
+after enter-> the read input is evaluated
+print-> The output from the evaluation is printed out to the terminal
+Loop->We loop back again and prompt the user for another input
