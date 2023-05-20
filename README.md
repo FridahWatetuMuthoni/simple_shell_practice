@@ -133,3 +133,46 @@ prompt-> read input
 after enter-> the read input is evaluated
 print-> The output from the evaluation is printed out to the terminal
 Loop->We loop back again and prompt the user for another input
+
+16. System Calls
+Linux System Calls
+System calls provided by the linux kernel are exposed in the C programming language via glibc. When
+a system call is used, you are communicating to the OS and on return the OS communicates to you
+thru the parameters that are returned to system call functions (return values).
+
+Stat System Call:
+stats system call is system call in linux to check the status of a file such as to check when the file was accessed. The stat() system call actually returns file attributes. The file attributes of 
+an inode are basically returned by stat() function. An inode contains the metadata of the file. An inode contains: the type of the file, the size of the file, when the file was accesed (modified, deleted) that is time stamps, and the path of the file, the user ID and the group ID, links of the file and physical address of the file content.
+syntax:
+int stat(const char *path, struct stat *buff)
+1. st_dev:its the ID of the device in which we have our file residing currently
+2. st_rdev:this filed describes that a particular file represents a particular device
+3. st_ino:it is the inode number or the serial number of the file
+4. st_size: st_size is the size of the file in bytes
+5. st_atime:its is the last time or the recent time at which the file was accessed
+6. st_ctime: it is the recent time at which the status or the permissins of the file was changed
+7. st_mtime:it is the recent time at whic the file was modified
+8. st_blksize: this field gives the preffered block size for I/O file system which may vary from file to file
+9. st_blocks: this field tells the total number of blocks in multiples of 512 bytes
+10. st_nlink: this is the field that tells the total number of hard links
+11. st_uid: this field indicates the user ID
+12. st_gid: This field indicates the group ID
+13. st_mode: it indicates the permissions of the file, tells the modes on the file. following are the flags that should be defined for st_mode field
+
+17. snprintf() function
+
+`snprintf(filename, sizeof(filename), "%s/%s", token, argv[1]);`
+
+`snprintf` is a function in C that is used to format a string and store it in a buffer. It allows you to specify the maximum length of the buffer to prevent buffer overflow. In this case, the buffer is `filename`, and its size is determined by `sizeof(filename)`.
+
+The format string `"%s/%s"` is used to define the desired format of the resulting string. It consists of two format specifiers `%s`, which are placeholders for strings. The first `%s` corresponds to `token`, and the second `%s` corresponds to `argv[1]`.
+
+`token` is a string that contains an individual directory path obtained by tokenizing the PATH environment variable. It represents one of the directories in which the program will search for the file.
+
+`argv[1]` is a string representing the filename provided as a command-line argument to the program.
+
+By using `snprintf`, the line of code combines the `token` (directory path) and `argv[1]` (filename) into a single string, separated by a forward slash (`/`). The resulting string is stored in the `filename` buffer, ensuring that it does not exceed the size of the buffer.
+
+For example, if `token` is "/usr/local/bin" and `argv[1]` is "myfile.txt", the `snprintf` line will create the full path to the file: "/usr/local/bin/myfile.txt", which is then stored in the `filename` buffer.
+
+This full path is used later in the program to attempt to open the file and check if it exists in that location.
